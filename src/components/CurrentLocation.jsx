@@ -32,7 +32,7 @@ export default function CurrentLocation() {
   }, []);
 
   return (
-    latitude && longitude ?
+    longitude ?
       <>
         <Home location={{
           lat: latitude,
@@ -40,16 +40,7 @@ export default function CurrentLocation() {
         }} />
         <p id="location">{`Your location is: ${latitude}, ${longitude}`}</p>
       </>
-      : <div className='flex w-screen h-screen bg-black items-center justify-center'>
-        <Triangle
-          height="100"
-          width="100"
-          color="#FFF"
-          ariaLabel="triangle-loading"
-          wrapperStyle={{}}
-          wrapperClassName=""
-          visible={true}
-        />
+      : <div className='flex h-screen bg-black items-center justify-center'>
       </div>
   )
 }
