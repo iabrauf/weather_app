@@ -28,6 +28,19 @@ export default function Home({ location }) {
       })
 
   }, []);
+
+  function showMsg() {
+    if (location.lat == 31.52) {
+      alert('This website is unable to access your current location.')
+    }
+    else {
+      axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=ebfe154d3fe337f02e40b43787701606`)
+        .then((value) => {
+          setValue(value);
+          console.log(value);
+        })
+    }
+  }
   return (
     value ?
       <>
@@ -36,9 +49,10 @@ export default function Home({ location }) {
             <SideBar />
           </div>
           <div className="md:basis-7/12 flex flex-col text-white mx-5">
-            <form onSubmit={handleSubmit}>
+            <form className='flex justify-between items-center' onSubmit={handleSubmit}>
               <input className=' bg-gray-800 w-full mt-6 p-5 rounded-3xl focus:outline-none relative'
                 type='text' placeholder='See Default City' value={city} onChange={(e) => setCity(e.target.value)}></input>
+              <img src='../src/assets/currentLocation.svg' onClick={showMsg} className='h-16 w-16 mt-6 p-3'></img>
             </form>
             <MainChildA value={value} />
           </div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Home from './Home';
-import { Triangle } from 'react-loader-spinner';
 
 export default function CurrentLocation() {
   const [latitude, setLatitude] = useState(null);
@@ -23,7 +22,8 @@ export default function CurrentLocation() {
 
     function handleError(error) {
       console.log(error);
-      alert("Enable location first to view weather of your Area");
+      setLatitude(31.52);
+      setLongitude(74.35)
     }
 
     return () => {
